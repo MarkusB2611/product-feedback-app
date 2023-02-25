@@ -2,7 +2,7 @@ import Pill from "../ui/pill";
 
 const Filter = ({ options, filter, onFilterChange }: FilterProps) => {
   return (
-    <div className="flex w-[255px] flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6">
+    <div className="flex flex-wrap gap-x-2 gap-y-[14px] rounded-[10px] bg-white p-6">
       {options.map((option) => {
         return (
           <Pill
@@ -20,7 +20,7 @@ const Filter = ({ options, filter, onFilterChange }: FilterProps) => {
 type FilterProps = {
   options: { value: string; label: string }[];
   filter: string;
-  onFilterChange: () => void;
+  onFilterChange: (value: string) => void;
 };
 
 export default Filter;
