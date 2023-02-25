@@ -2,7 +2,9 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import Filter from "~/components/suggestions/filter";
+import RoadmapBox from "~/components/suggestions/roadmap-box";
 import TitleBoard from "~/components/suggestions/title-board";
+import DATA from "~/data.json";
 
 const FILTER_OPTIONS = [
   { value: "", label: "All" },
@@ -15,6 +17,7 @@ const FILTER_OPTIONS = [
 
 const Home: NextPage = () => {
   const [filter, setFilter] = useState("");
+  const [suggestions, setSuggestions] = useState(DATA.productRequests);
 
   const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
@@ -35,7 +38,13 @@ const Home: NextPage = () => {
             filter={filter}
             onFilterChange={handleFilterChange}
           />
-          <div></div>
+          <RoadmapBox
+            planned={suggestions.filter((s) => s.status === "planned").length}
+            inProgress={
+              suggestions.filter((s) => s.status === "in-progress").length
+            }
+            live={suggestions.filter((s) => s.status === "live").length}
+          />
         </div>
         <main className=""></main>
       </div>
