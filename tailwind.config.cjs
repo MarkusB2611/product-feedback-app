@@ -33,6 +33,13 @@ module.exports = {
             fontWeight: "400",
           },
         ],
+        body3: [
+          "13px",
+          {
+            lineHeight: "19px",
+            fontWeight: "600",
+          },
+        ],
       },
       backgroundImage: {
         "gradient-desktop": "url('/desktop/background-header.png')",
