@@ -6,3 +6,8 @@
     font-family: "Jost";
     src: url("/fonts/Jost.ttf");
   }
+
+body {
+  background: hsl(230deg 60% 98%);
+  font-family: Jost, sans-serif;
+}
