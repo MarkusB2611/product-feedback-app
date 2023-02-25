@@ -9,8 +9,9 @@ import bulbIcon from "~/assets/suggestions/icon-suggestions.svg";
 import Image from "next/image";
 import Link from "next/link";
 import NoSuggestions from "~/components/suggestions/no-suggestions";
+import SuggestionsList from "~/components/suggestions/suggestions-list";
 
-const FILTER_OPTIONS = [
+export const FILTER_OPTIONS = [
   { value: "", label: "All" },
   { value: "ui", label: "UI" },
   { value: "ux", label: "UX" },
@@ -23,7 +24,7 @@ const Home: NextPage = () => {
   const [filter, setFilter] = useState("");
   const [suggestions, setSuggestions] = useState(DATA.productRequests);
   const numberOfSuggestions = suggestions.filter(
-    (s) => s.status === "suggestion"
+    (s) => s.status === "suggestion" && s.category.includes(filter)
   ).length;
 
   const handleFilterChange = (newFilter: string) => {
@@ -57,7 +58,14 @@ const Home: NextPage = () => {
           <div className="mb-6 flex items-center justify-between rounded-[10px] bg-[#373F68] py-[14px] pl-6 pr-4 text-h3 text-white">
             <div className="flex items-center gap-4">
               <Image src={bulbIcon.src} width={24} height={24} alt="" />
-              <span>{numberOfSuggestions} Suggestions</span>
+              <span>
+                {numberOfSuggestions} Suggestion
+                <span
+                  className={`${numberOfSuggestions === 1 ? "invisible" : ""}`}
+                >
+                  s
+                </span>
+              </span>
               {/* <div className="ml-[22px]">Sort by</div> */}
             </div>
             <Link
@@ -67,7 +75,14 @@ const Home: NextPage = () => {
               + Add Feedback
             </Link>
           </div>
-          {numberOfSuggestions === 0 && <NoSuggestions />}
+          {numberOfSuggestions === 0 ? (
+            <NoSuggestions />
+          ) : (
+            <SuggestionsList
+              suggestions={suggestions.filter((s) => s.status === "suggestion")}
+              filter={filter}
+            />
+          )}
         </main>
       </div>
     </>

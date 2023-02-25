@@ -7,6 +7,10 @@
     src: url("/fonts/Jost.ttf");
   }
 
+  html {
+    overflow-y: scroll;
+  }
+
 body {
   background: hsl(230deg 60% 98%);
   font-family: Jost, sans-serif;
