@@ -1,5 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
+import TitleBoard from "~/components/suggestions/title-board";
 
 const Home: NextPage = () => {
   return (
@@ -11,12 +12,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="mt-[94px] flex justify-center">
         <div className="w-[255px]">
-          <div className="h-[137px] w-full rounded-[10px] bg-gradient-desktop pl-6 pt-[62px]">
-            <h1 className="text-h2 text-white">Frontend Mentor</h1>
-            <div className="text-body2 text-white opacity-75">
-              Feedback Board
-            </div>
-          </div>
+          <TitleBoard />
           <div></div>
         </div>
         <main className=""></main>
