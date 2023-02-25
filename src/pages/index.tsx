@@ -7,6 +7,8 @@ import TitleBoard from "~/components/suggestions/title-board";
 import DATA from "~/data.json";
 import bulbIcon from "~/assets/suggestions/icon-suggestions.svg";
 import Image from "next/image";
+import Link from "next/link";
+import NoSuggestions from "~/components/suggestions/no-suggestions";
 
 const FILTER_OPTIONS = [
   { value: "", label: "All" },
@@ -20,6 +22,9 @@ const FILTER_OPTIONS = [
 const Home: NextPage = () => {
   const [filter, setFilter] = useState("");
   const [suggestions, setSuggestions] = useState(DATA.productRequests);
+  const numberOfSuggestions = suggestions.filter(
+    (s) => s.status === "suggestion"
+  ).length;
 
   const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
@@ -49,22 +54,20 @@ const Home: NextPage = () => {
           />
         </div>
         <main className="w-[825px]">
-          <div className="flex items-center justify-between rounded-[10px] bg-[#373F68] py-[14px] pl-6 pr-4 text-h3 text-white">
+          <div className="mb-6 flex items-center justify-between rounded-[10px] bg-[#373F68] py-[14px] pl-6 pr-4 text-h3 text-white">
             <div className="flex items-center gap-4">
               <Image src={bulbIcon.src} width={24} height={24} alt="" />
-              <span>
-                {suggestions.filter((s) => s.status === "suggestion").length}{" "}
-                Suggestions
-              </span>
+              <span>{numberOfSuggestions} Suggestions</span>
               {/* <div className="ml-[22px]">Sort by</div> */}
             </div>
-            <a
-              className="rounded-[10px] bg-[#AD1FEA] px-6 py-3 text-h4 hover:bg-[#C75AF6]"
+            <Link
+              className="rounded-[10px] bg-[#AD1FEA] px-6 py-3 text-h4 text-white hover:bg-[#C75AF6]"
               href="#"
             >
               + Add Feedback
-            </a>
+            </Link>
           </div>
+          {numberOfSuggestions === 0 && <NoSuggestions />}
         </main>
       </div>
     </>
