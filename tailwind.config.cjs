@@ -3,6 +3,7 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
+      md: '768px',
       lg: "1440px",
     },
     extend: {
@@ -69,6 +70,8 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-desktop": "url('/desktop/background-header.png')",
+        "gradient-tablet": "url('/tablet/background-header.png')",
+        "gradient-mobile": "url('/mobile/background-header.png')",
       },
     },
   },
