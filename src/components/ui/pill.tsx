@@ -6,7 +6,9 @@ const Pill = ({ option, filter, onClick }: PillProps) => {
           ? "bg-[#4661E6] text-white"
           : "bg-[#F2F4FF] text-[#4661E6]"
       }`}
-      onClick={() => onClick(option.value)}
+      onClick={() => {
+        if (onClick) onClick(option.value);
+      }}
     >
       {option.label}
     </button>
