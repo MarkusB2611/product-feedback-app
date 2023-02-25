@@ -26,11 +26,33 @@ module.exports = {
             fontWeight: "700",
           },
         ],
+        h3: [
+          "18px",
+          {
+            lineHeight: "26px",
+            letterSpacing: "-0.25px",
+            fontWeight: "700",
+          },
+        ],
+        body1: [
+          "16px",
+          {
+            lineHeight: "23px",
+            fontWeight: "400",
+          },
+        ],
         body2: [
           "15px",
           {
             lineHeight: "22px",
             fontWeight: "400",
+          },
+        ],
+        body3: [
+          "13px",
+          {
+            lineHeight: "19px",
+            fontWeight: "600",
           },
         ],
       },
