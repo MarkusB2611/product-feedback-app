@@ -3,8 +3,10 @@ import Image from "next/image";
 import Pill from "../ui/pill";
 import commentsIcon from "~/assets/shared/icon-comments.svg";
 import SuggestionUpvotes from "./suggestion-upvotes";
+import type { Feedback } from "@prisma/client";
+import Link from "next/link";
 
-const SuggestionItem = ({ suggestion }) => {
+const SuggestionItem = ({ suggestion }: SuggestionItemProps) => {
   let numberOfComments = 0;
   if (suggestion.comments) {
     numberOfComments += suggestion.comments.length;
@@ -16,9 +18,9 @@ const SuggestionItem = ({ suggestion }) => {
   }
 
   return (
-    <div
+    <Link
       className="#3A4374 flex items-center justify-between rounded-[10px] bg-white px-8 py-7 hover:cursor-pointer hover:text-[#4661E6]"
-      onClick={() => alert("a")}
+      href={`/${suggestion.id}`}
     >
       <div className="z-10 flex gap-[40px]">
         <SuggestionUpvotes upvotes={suggestion.upvotes} isUpvoted={false} />
@@ -49,8 +51,12 @@ const SuggestionItem = ({ suggestion }) => {
           {numberOfComments}
         </span>
       </div>
-    </div>
+    </Link>
   );
+};
+
+type SuggestionItemProps = {
+  suggestion: Feedback;
 };
 
 export default SuggestionItem;

@@ -1,6 +1,7 @@
+import type { Feedback } from "@prisma/client";
 import SuggestionItem from "./suggestion-item";
 
-const SuggestionsList = ({ suggestions, filter }) => {
+const SuggestionsList = ({ suggestions, filter }: SuggestionsListProps) => {
   return (
     <div className="mb-[129px] flex flex-col gap-5">
       {suggestions
@@ -10,6 +11,11 @@ const SuggestionsList = ({ suggestions, filter }) => {
         })}
     </div>
   );
+};
+
+type SuggestionsListProps = {
+  suggestions: Feedback[];
+  filter: string;
 };
 
 export default SuggestionsList;
