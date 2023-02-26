@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import NoSuggestions from "~/components/suggestions/no-suggestions";
 import SuggestionsList from "~/components/suggestions/suggestions-list";
+import Select from "~/components/ui/select";
 
 export const FILTER_OPTIONS = [
   { value: "", label: "All" },
@@ -22,6 +23,7 @@ export const FILTER_OPTIONS = [
 
 const Home: NextPage = () => {
   const [filter, setFilter] = useState("");
+  const [sortBy, setSortBy] = useState("Most Upvotes");
   const [suggestions, setSuggestions] = useState(DATA.productRequests);
   const numberOfSuggestions = suggestions.filter(
     (s) => s.status === "suggestion" && s.category.includes(filter)
@@ -66,6 +68,7 @@ const Home: NextPage = () => {
                   s
                 </span>
               </span>
+              {/* <Select sortBy={sortBy} /> */}
               {/* <div className="ml-[22px]">Sort by</div> */}
             </div>
             <Link
