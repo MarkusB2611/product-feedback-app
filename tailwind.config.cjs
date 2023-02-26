@@ -2,6 +2,10 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      md: '768px',
+      lg: "1440px",
+    },
     extend: {
       colors: {
         background: "hsl(230deg 60% 98% / <alpha-value>)",
@@ -34,6 +38,14 @@ module.exports = {
             fontWeight: "700",
           },
         ],
+        h4: [
+          "14px",
+          {
+            lineHeight: "20px",
+            letterSpacing: "-0.20px",
+            fontWeight: "700",
+          },
+        ],
         body1: [
           "16px",
           {
@@ -58,6 +70,8 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-desktop": "url('/desktop/background-header.png')",
+        "gradient-tablet": "url('/tablet/background-header.png')",
+        "gradient-mobile": "url('/mobile/background-header.png')",
       },
     },
   },
