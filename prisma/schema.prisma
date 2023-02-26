@@ -6,12 +6,36 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "mongodb"
     url      = env("DATABASE_URL")
 }
 
-model Example {
-    id        String   @id @default(cuid())
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+model Feedback {
+    id          String    @id @default(auto()) @map("_id") @db.ObjectId
+    createdAt   DateTime  @default(now())
+    updatedAt   DateTime  @updatedAt
+    title       String
+    category    String
+    upvotes     Int
+    status      String
+    description String
+    comments    Comment[]
+}
+
+type Comment {
+    content String
+    user    User
+    replies Reply[]
+}
+
+type Reply {
+    content    String
+    replyingTo String
+    user       User
+}
+
+type User {
+    image    String
+    name     String
+    username String
 }
