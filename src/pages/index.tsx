@@ -11,6 +11,7 @@ import Link from "next/link";
 import NoSuggestions from "~/components/suggestions/no-suggestions";
 import SuggestionsList from "~/components/suggestions/suggestions-list";
 import Select from "~/components/ui/select";
+import { api } from "~/utils/api";
 
 export const FILTER_OPTIONS = [
   { value: "", label: "All" },
@@ -24,7 +25,12 @@ export const FILTER_OPTIONS = [
 const Home: NextPage = () => {
   const [filter, setFilter] = useState("");
   const [sortBy, setSortBy] = useState("Most Upvotes");
-  const [suggestions, setSuggestions] = useState(DATA.productRequests);
+  const suggestionsData = api.feedback.getAll.useQuery();
+
+  if (suggestionsData.isLoading || suggestionsData.isError) return <></>;
+  // if (suggestionsData.isError) return <p>Error</p>;
+
+  const suggestions = suggestionsData.data;
   const numberOfSuggestions = suggestions.filter(
     (s) => s.status === "suggestion" && s.category.includes(filter)
   ).length;
@@ -73,7 +79,7 @@ const Home: NextPage = () => {
             </div>
             <Link
               className="rounded-[10px] bg-[#AD1FEA] px-6 py-3 text-h4 text-white hover:bg-[#C75AF6]"
-              href="#"
+              href="/feedback/add"
             >
               + Add Feedback
             </Link>
