@@ -3,12 +3,16 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     screens: {
-      md: '768px',
+      md: "768px",
       lg: "1440px",
     },
     extend: {
+      boxShadow: {
+        select: "0px 10px 40px -7px rgba(55, 63, 104, 0.350492)",
+      },
       colors: {
         background: "hsl(230deg 60% 98% / <alpha-value>)",
+        "border-select": "hsl(231deg 33% 34% / <alpha-value>)",
       },
       fontFamily: {
         Jost: ["Jost", "sans-serif"],
