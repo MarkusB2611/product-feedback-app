@@ -1,5 +1,7 @@
 import arrowDown from "~/assets/shared/icon-arrow-down.svg";
 import arrowUp from "~/assets/shared/icon-arrow-up.svg";
+import check from "~/assets/shared/icon-check.svg";
+
 import Image from "next/image";
 import { useState } from "react";
 
@@ -56,7 +58,7 @@ const Select = ({
               >
                 {option.label}
                 {value === option.value && (
-                  <Image src={arrowDown} alt="" className="h-2" />
+                  <Image src={check} alt="" className="h-2" />
                 )}
               </li>
             );
